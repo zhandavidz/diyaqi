@@ -1,0 +1,14 @@
+***SensPost.service***
+[Unit]
+Description=Periodic data emitter for BME280
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/pi/diyaqi/postaqi.py
+User=pi
+WorkingDirectory=/home/pi/diyaqi
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
