@@ -1,4 +1,4 @@
-# Elam's Air Quality RasPi Based Sensor Deployment Protocol!
+# Elam's Air Quality RasPi Based Sensor Deployment Protocol
 
 ## Welcome!
 
