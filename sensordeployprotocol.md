@@ -18,6 +18,7 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 
 **[Next Steps](#once-youre-in)**
 
+#### Note: If you already have a set up Pi, skip to **[Next Steps](#once-youre-in)**, starting in the home directory
 
 ## Components
 
