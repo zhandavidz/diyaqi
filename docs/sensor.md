@@ -41,7 +41,7 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 
 Let's get to work!
 
-1. Download the latest Raspberry Pi OS (formerly Raspian) image from https://www.raspberrypi.org/software/operating-systems/
+1. Download the latest Raspberry Pi OS (formerly Raspian) image from <a href="https://www.raspberrypi.org/software/operating-systems/" target="_blank">this link </a>
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
 2. Download and install BalenaEtcher from https://www.balena.io/etcher/ for whatever operating system you are on
 3. Plug in your MicroSD card
