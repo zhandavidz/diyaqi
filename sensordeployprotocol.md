@@ -4,7 +4,25 @@
 
 Below are the steps to set up your very own Raspberry-Pi based air quality monitoring station
 
-## Make sure you have all of your components; This includes
+## Table of Contents
+
+**[Components list](#components)**
+
+**[Burning an OS Image](#burning-a-raspberry-pi-os-image)**
+
+**[Pre-Boot Configureatiuon](#headless-config)**
+
+**[First Boot!](#first-boot)**
+
+**[SSHing in](#sshing-in)**
+
+**[Next Steps](#once-youre-in)**
+
+
+## Components
+
+ Make sure you have all of your components; This includes
+
 	- Raspberry pi Zero W*
 	- BME280 Sensor with headers
 	- 4 female to female jumper wires
@@ -17,7 +35,11 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 
 **if you use BSD you probably don't need to be reading this, but welcome! use dd or something lol
 
-## Let's get to work! Burning a raspian image
+
+## Burning a Raspberry Pi OS Image
+
+Let's get to work!
+
 1. Download the latest Raspberry Pi OS (formerly Raspian) image from https://www.raspberrypi.org/software/operating-systems/
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
 2. Download and install BalenaEtcher from https://www.balena.io/etcher/ for whatever operating system you are on
@@ -46,9 +68,7 @@ Once you get into the boot partition, make a file called "ssh" with no extension
 
 To automatically connect to wifi, we need to change a file called "wpa_supplicant.conf"; This file manages your Raspberry Pi automatically connecting to wifi on boot
 
-Luckily, all we need to do is put our wpa supplicant in the boot folder and Rasberry Pi OS will locate it correctly for us! Isn't that nice?
-
-#### Steps
+Luckily, all we need to do is put our wpa supplicant in the boot folder and Rasberry Pi OS will locate it correctly for us! Isn't that nice? Let's do that real quick.
 
 1. Create a file in the same boot folder we just put that 'ssh' file in, call it "wpa_supplicant.conf"
 2. In that file put the following text, replacing <SSID> with your wifi network name, and <PASS> with that network's password (keeping the quotes around them)
