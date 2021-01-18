@@ -54,7 +54,16 @@ checkUnique(){
 		echo 1
 	fi
 }
+testPost(){
+	resp=$(python postaqi.py firsttry)
+	if [ "$resp" == "<200>" ]; then
+		echo 0
+	else
+		echo "$resp"
+	fi
+}
 echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
+
 
 pulldeps || error "dependancy pull failed!"
 
@@ -127,4 +136,42 @@ while ! [ $flag -eq 0 ]; do
 		echo "your entry \($name\) did not meet the requirements :( please try again"
 	fi
 done
-# python $host $name
+
+printf "%s\n%s" "$host" "$name" > config
+
+echo "configuration stored!"
+
+echo "attempting to make a POST request..."
+
+try=$(testPost)
+if [ "$try" -eq 0 ]; then
+	echo "success! enabling automatic restart on boot"
+else
+	echo "failure, see error trace below :( exiting...."
+	echo "$try"
+	exit 1
+fi
+
+echo "changing script permissions..."
+
+chmod +x postaqi.py || error "changing permissions failed!"
+
+echo "creating service..."
+
+cat serviceunit > /etc/systemd/system/postaqi.service || error "creating service failed :("
+
+echo "service created with a name of \"postaqi\"! Enabling..."
+
+systemctl enable postaqi.service || error "failed to emable script :("
+
+echo "service enabled! reloading daemon...."
+
+systemctl daemon-reload || error "failed to reload daemon :("
+
+echo "daemon reloaded! starting service..."
+
+systemctl start postaqi.service || error "failed to start service :("
+
+echo "service started! you can check its status by running \"sudo systemctl status postaqi.service\" everything is now set up! Put this Pi Sensor combo somewhere safe, and have a great day!"
+
+exit 0
