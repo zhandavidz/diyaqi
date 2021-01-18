@@ -41,13 +41,19 @@ sensorTest(){
 hostTest(){
 	resp=$(curl -o /dev/null -i -L -s -w "%{http_code}\n" "$host/test")
 	if [ "$resp" == 200 ]; then
-		return 0
+		echo 0
 	else
-		return 1
+		echo 1
 	fi
 }
-
-
+checkUnique(){
+	resp=$(curl -o /dev/null -i -L -s -w "%{http_code}\n" -d "name=DavidHouse" -X POST 127.0.0.1/checkUnique)
+	if [ "$resp" == 200 ]; then
+		echo 0
+	else
+		echo 1
+	fi
+}
 echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
 
 pulldeps || error "dependancy pull failed!"
@@ -72,8 +78,8 @@ while ! [ $flag -eq 0 ]; do
 	read -r host
 	echo "you entered $host is this correct? [Y/n]"
 	read -r flag
-	if ! [ "$flag" == "n" ]; then
-		flag=1
+	if [ "$flag" == "n" ]; then
+		flag=0
 	fi
 	if [ $flag -eq 1 ]; then
 		echo "testing host..."
@@ -93,4 +99,32 @@ while ! [ $flag -eq 0 ]; do
 	fi
 done
 
-echo
+flag=1
+while ! [ $flag -eq 0 ]; do
+	echo "enter what you'd like your sensor to be called. Please make it only upper and lower case letteers, numbers, and no spaces. Ex. \"ElamHouse1\""
+	read -r name
+	if [[ $name == *[a-zA-Z0-9]* ]]; then
+		echo "you entered $name is this correct? [Y/n]"
+		read -r flag
+		if [ "$flag" == "n" ]; then
+			flag=0
+		else
+			flag=1
+		fi
+		if ! [ "$flag" -eq 0 ]; then
+			echo "checking uniqueness..."
+			flag=$(checkUnique "$name")
+			if [ "$flag" -eq 0 ]; then
+				echo "Your sensor name is unique! Proceeding..."
+			else
+				echo "Someone already snagged that name :( please try a different one"
+			fi
+		fi
+
+
+
+	else
+		echo "your entry \($name\) did not meet the requirements :( please try again"
+	fi
+done
+# python $host $name
