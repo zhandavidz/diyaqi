@@ -9,7 +9,7 @@ deviceExists() {
 	devs=$(i2cdetect -y 1 | sed 1d | sed 's/^....//' | sed 's/--//g')
 	# if [ -n "${devs// }" ]; then
 	case $devs in
-		(*[![:blank:]]*) echo "$devs";;
+		(*[![:blank:]]*) echo "$devs" | xargs echo;;
 		(*) echo 0
 	esac
 
