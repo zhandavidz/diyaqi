@@ -41,7 +41,13 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 
 ## Burning a Raspberry Pi OS Image
 
-Let's get to work!
+Let's get to work! There are two options to burn Raspberry Pi OS onto your pi.
+
+#### Option 1: Raspberry Pi Imager (Recommended)
+
+1. step one
+
+#### Option 2: Download Image + BalenaEtcher
 
 1. Download the latest Raspberry Pi OS (formerly Raspian) image from https://www.raspberrypi.org/software/operating-systems/
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
