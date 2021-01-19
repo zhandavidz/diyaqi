@@ -40,7 +40,7 @@ pulldeps(){
 	#enable i2c
 }
 enablei2c(){
-	if compgen -G "/dev/i2c*" > /dev/null; then
+	if compgen -G \"/dev/i2c*\" > /dev/null; then
 		echo 0
 	else
 		echo "i2c-bcm2708" >> /etc/modules
@@ -81,6 +81,7 @@ testPost(){
 	fi
 }
 echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
+
 if [ "$(enablei2c)" -eq 1 ]; then
 	read -r -p "i2c has just been enabled. We now need to reboot. Press enter to continue, and then rerun this script with \"sudo ./setup.sh\" once you reconnect"
 	reboot
