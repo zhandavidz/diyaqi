@@ -16,7 +16,7 @@ pulldeps(){
 	apt-get update
 
 	# git, cuz duh
-	apt-get install git
+	apt-get install -y git
 	git clone https://github.com/t3chy/diyaqi
 	cd diyaqi || error "can't change directory git clone probably failed"
 
@@ -39,7 +39,7 @@ pulldeps(){
 }
 sensorTest(){
 	v="$(python sensorTest.py)"
-	if $v; then
+	if ! [ "$v" -eq 0 ]; then
 		exit 1
 	fi
 }
@@ -72,7 +72,40 @@ echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
 
 pulldeps || error "dependancy pull failed!"
 
-read -r -p "dependancies pulled! Please hook up your BME280 sensor and press enter to continue"
+read -r -p "dependancies pulled! Please hook up your BME280 sensor according to the diagram below and press enter to continue"
+
+cat << "EOF"
+(not to scale, top left pin is pin #1)
+Wire your sensor according to the following key
+_______________________
+|Sensor     |Pi       |
+|---------------------|
+|VCC/V+/VIN |V        |
+|GND        |G        |
+|SDA        |D        |
+|SCL        |C        |
+|---------------------|
+
+.____________.
+|h   sd   .V |
+|d        D. |
+|m        C. |
+|i        .. |
+|         G. |
+|         .. |
+|u        .. |
+|s        .. |
+|b        .. |
+|u        .. |
+|s        .. |
+|b        .. |
+|____________|
+
+
+
+
+EOF
+
 
 echo "attempting to detect i2c devicew.."
 
