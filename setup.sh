@@ -8,8 +8,8 @@ i2cDeviceExists() {
 	devs=$(i2cdetect -y 1 | sed 1d | sed 's/^....//' | sed 's/--//g')
 	# if [ -n "${devs// }" ]; then
 	case $devs in
-		(*[![:blank:]]*) return "$(echo "$devs" | xargs echo)";;
-		(*) return 0
+		(*[![:blank:]]*) return 0;;
+		(*) return 1
 	esac
 }
 pulldeps(){
@@ -131,7 +131,7 @@ read -r -p "Please hook up your BME280 sensor according to the diagram above and
 
 echo "attempting to detect i2c devicew.."
 
-if ! i2cDeviceExists; then
+if i2cDeviceExists; then
 	echo "Device found! Proceeding"
 else
 	error "Device not found :( please check your wiring and rerun this script"
