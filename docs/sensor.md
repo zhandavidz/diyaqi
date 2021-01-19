@@ -30,7 +30,7 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 	- a micro USB cable to power your pi
 	- a micro SD card (at least 16GB in size)
 	- Some way to interface with your microsd card (adapter, port, etc)
-	- A computer running Windows, OS X (macOS), or linux)**
+	- A computer running Windows, OS X (macOS), or linux**
 
 **Note: you will need to wire up to the GPIO pins on the pi, so gettting a version with presoldered headers is recommended if you don't want to solder them yourself**
 
@@ -78,11 +78,11 @@ Firstly, we need to enable ssh (secure shell) on the pi
 	 (secure shell is a method by which a computer can remotley access another computer)
 
 ### Enabling secure shell access (ssh)
-When you burned your Raspberry pi OS image, there should have been two 'partitions' created on your SD card. They will appear, on most operating systems, as two individual devices. We need to access the "boot" partition, which is the first partition and is also the smaller one.
+When you burned your Raspberry pi OS image, there should have been two 'partitions' created on your SD card. They will appear, on most operating systems, as two individual devices. We need to access the "boot" partition, which is the first partition and is also the smaller one. If you cannot find either, the imager may have automatically ejected the MicroSD card. In that case, just remove it and reinsert it.
 
 **Look for files named "start.elf" and "cmdline.txt" to confirm you are in the boot partition**
 
-Once you get into the boot partition, make a file called "ssh" with no extension and save it. The text inside it doesn't matter, so you can put anything you want in there (or nothing, it doesn't matter)
+Once you get into the boot partition, make a file called "ssh" with no extension and save it. An easy way of doing that on Windows is to make a text file but remove the `.txt` extension. Make sure that the system recognizes it as just a "file" and not a text document. The text inside it doesn't matter, so you can put anything you want in there (or nothing, it doesn't matter)
 
 **SSH will now be enabled on first boot!**
 
@@ -117,9 +117,9 @@ Once you've given your pi 10 minutes to set up, we can access it from our comput
 
 ## SSHing in
 
-### MacOS or Linux
-
 For MacOS or linux, you will aready have ssh installed. For windows, you MAY have ssh installed; try the steps below, and if you get an "ssh is not recognized as an internal or external command" kind of thing, follow the instructions for "ssh (PuTTY)" below
+
+### MacOS, Linux, and possibly Windows
 
 open your terminal and type in the following command and press enter
 
@@ -143,7 +143,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 **before you are prompted for the password, just type "yes" and press enter to continue**
 
-### Windows (PuTTY)
+### Legacy Windows (PuTTY)
 
 install [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), a simple ssh client for windows
 
@@ -167,7 +167,7 @@ Last login: Fri Jun 26 10:21:38 2020 from 192.168.43.138
 pi@raspberrypi:~ $
 ```
 
-The version number and time will be different, but the important part is that you get that "pi@raspberrypi:~$". That means you're in (you have a shell, or command line access on/to the pi)!
+The version number and time will be different, but the important part is that you get that `pi@raspberrypi:~$`. That means you're in (you have a shell, or command line access on/to the pi)!
 
 (*If you want, you can change the default password of "raspberry" by typing "passwd" in the shell prompt, pressing enter, and following the password change prompts*)
 
@@ -176,7 +176,7 @@ We now need to set up the sensor, and get it reporting. You're doing great!
 We now need to set up the sensor, configure where we're sending the data, and configure the data-sending script to start every time we turn on our pi. Sounds like a lot, doesn't it? Luckily, most of the process is automated (thanks, scripting!).
 
 
-All you need to do is run the following command while you're at the "pi@raspberrypi:~ $" prompt"
+All you need to do is run the following command while you're at the `pi@raspberrypi:~ $` prompt
 
 ```
 wget https://raw.githubusercontent.com/T3chy/diyaqi/main/setup.sh && sudo chmod +x setup.sh && sudo ./setup.sh
