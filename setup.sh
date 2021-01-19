@@ -86,7 +86,8 @@ echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
 pulldeps || error "dependancy pull failed!"
 
 if [ "$(enablei2c)" -eq 1 ]; then
-	echo "i2c has just been enabled. We now need to reboot. Press enter to continue, and then rerun this script with \"sudo ./setup.sh\" once you reconnect"
+	read -r -p "i2c has just been enabled. We now need to reboot. Press enter to continue, and then rerun this script with \"sudo ./setup.sh\" once you reconnect"
+	reboot
 fi
 
 
