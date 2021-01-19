@@ -40,7 +40,7 @@ pulldeps(){
 	#enable i2c
 }
 enablei2c(){
-	if compgen -G "/dev/i2c*" > /dev/null; then
+	if ! i2cdetect -y 1; then
 		echo "i2c-bcm2708" >> /etc/modules
 		echo "i2c-dev" >> /etc/modules
 		echo "dtparam=i2c_arm=on" >> /boot/config.txt
