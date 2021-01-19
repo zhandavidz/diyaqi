@@ -68,7 +68,7 @@ hostTest(){
 	fi
 }
 checkUnique(){
-	resp=$(curl -o /dev/null -i -L -s -w "%{http_code}\n" -d "name=DavidHouse" -X POST "$host/checkUnique")
+	resp=$(curl -o /dev/null -i -L -s -w "%{http_code}\n" -d "name=$1" -X POST "$host/checkUnique")
 	if [ "$resp" == 200 ]; then
 		echo 0
 	else
