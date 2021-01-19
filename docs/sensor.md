@@ -174,4 +174,16 @@ Follow the prompts in the script, and you should be good to go! Congratulations!
 
 ## Troubleshooting
 
-WIP
+
+#### "I see \"The package cache file is corrupted\" !! Help!!
+**Solution: run**
+
+```
+sudo rm -rf /var/lib/apt/lists/*
+```
+
+entering your password as needed, and then re run the install script with
+
+```
+sudo ./setup.sh
+```

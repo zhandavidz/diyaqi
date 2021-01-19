@@ -54,7 +54,7 @@ enablei2c(){
 	fi
 	}
 sensorTest(){
-	v="$(python sensorTest.py)"
+	v="$(python sensorTest.py > /dev/null)"
 	if ! [ "$v" -eq 0 ]; then
 		exit 1
 	fi
@@ -139,7 +139,7 @@ fi
 
 echo "testing the sensor..."
 
-sensorTest > /dev/null || error "sensor test failed!"
+sensorTest || error "sensor test failed!"
 
 flag=1
 while ! [ $flag -eq 0 ]; do
