@@ -29,7 +29,7 @@ pulldeps(){
 	apt-get install -y curl
 
 	# i2ctools to detect device
-	apt-get install -y i2ctools
+	apt-get install -y i2c-tools
 
 	# BME / boardio deps
 
