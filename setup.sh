@@ -16,14 +16,19 @@ pulldeps(){
 	apt-get update || error "apt-get update failed! Is your package cache corrupted? see troubleshooting"
 	# git, cuz duh
 	apt-get install -y git
-	git clone https://github.com/t3chy/diyaqi
-	cd diyaqi || error "can't change directory git clone probably failed"
+
+	cd diyaqi || git clone https://github.com/t3chy/diyaqi
+	cd diyaqi || error "can't enter source dir"
 
 	# python, for obvious reasons
 	apt-get install -y python3 python3-pip || exit 1
 	pip3 install --upgrade setuptools
 
-	# cURL to test website
+	#make python3 default
+	update-alternatives --install /usr/bin/python python "$(which python2)" 1
+	update-alternatives --install /usr/bin/python python "$(which python3)" 2
+
+	# cURL to test website continuity and name uniqueness
 
 	apt-get install -y curl
 
@@ -91,7 +96,7 @@ echo "Pulling dependancies..."
 pulldeps || error "dependancy pull failed!"
 
 
-read -r -p "dependancies pulled! Please hook up your BME280 sensor according to the diagram below and press enter to continue"
+echo "dependancies pulled!"
 
 cat << "EOF"
 (not to scale, top left pin is pin #1)
@@ -120,11 +125,9 @@ _______________________
 |b        .. |
 |____________|
 
-
-
-
 EOF
 
+read -r -p "Please hook up your BME280 sensor according to the diagram above and press enter to continue"
 
 echo "attempting to detect i2c devicew.."
 
@@ -136,7 +139,7 @@ fi
 
 echo "testing the sensor..."
 
-sensorTest || error "sensor test failed!"
+sensorTest > /dev/null || error "sensor test failed!"
 
 flag=1
 while ! [ $flag -eq 0 ]; do
