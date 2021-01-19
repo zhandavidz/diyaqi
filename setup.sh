@@ -13,8 +13,7 @@ i2cDeviceExists() {
 	esac
 }
 pulldeps(){
-	apt-get update
-
+	apt-get update || error "apt-get update failed! Is your package cache corrupted? see troubleshooting"
 	# git, cuz duh
 	apt-get install -y git
 	git clone https://github.com/t3chy/diyaqi
@@ -79,7 +78,7 @@ testPost(){
 		echo "$resp"
 	fi
 }
-cd ~/ || error "cd failed ???"
+cd /home/pi || error "cd failed ???"
 
 echo "Welcome to the PiAQI autoinstallation script!"
 
