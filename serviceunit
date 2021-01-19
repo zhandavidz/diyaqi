@@ -1,4 +1,3 @@
-***SensPost.service***
 [Unit]
 Description=Periodic data emitter for BME280
 After=multi-user.target
