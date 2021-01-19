@@ -43,11 +43,15 @@ Let's get to work!
 
 1. Download the latest Raspberry Pi OS (formerly Raspian) image from https://www.raspberrypi.org/software/operating-systems/
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
-2. Download and install BalenaEtcher from https://www.balena.io/etcher/ for whatever operating system you are on
-3. Plug in your MicroSD card
+2. Unzip the image. This can usually be done by right clicking the .zip file and clicking "extract here" or something similar
+3. Download and install BalenaEtcher from https://www.balena.io/etcher/ for whatever operating system you are on
+4. Plug in your MicroSD card
 **Warning: the next steps will wipe all current data on your MicroSD Card**
-4. Open BalenaEtcher (you may need to open it with admin privileges), select your MicroSD card (make sure you aren't accidentally burning the image to a random flash drive that's plugged in!) and the Raspberry Pi OS image, click "Flash!" and wait for Etcher to do its thing (flashing and verifying your flash)
-5. Once BalenaEtcher finishes, you should have a bootable version of Raspberry Pi OS! Just a few more things to do before we put that card in the Pi
+5. Open BalenaEtcher (you may need to open it with admin privileges)
+	- Click "Flash from file" and select the .img you extracted in step 3
+	- Click "Select target" and then select your MicroSD card (make sure you aren't accidentally burning the image to a random flash drive that's plugged in!)
+	- Click "Flash!" and wait for Etcher to do its thing (flashing and verifying your flash)
+6. Once BalenaEtcher finishes, you should have a bootable version of Raspberry Pi OS! Just a few more things to do before we put that card in the Pi
 
 ## Headless Config
 
@@ -56,10 +60,12 @@ We will be setting up the pi "headless", which means we won't need to connect an
 This requires us to do some manual setup on the pi before we boot it up for the first time, but don't worry! Just follow the instructions carefully and you should be good to go!
 
 Firstly, we need to enable ssh (secure shell) on the pi
-	- secure shell is a method by which a computer can remotley access another computer
+	 (secure shell is a method by which a computer can remotley access another computer)
 
 ### Enabling secure shell access (ssh)
 When you burned your Raspberry pi OS image, there should have been two 'partitions' created on your SD card. They will appear, on most operating systems, as two individual devices. We need to access the "boot" partition, which is the first partition and is also the smaller one.
+
+**Look for files named "start.elf" and "cmdline.txt" to confirm you are in the boot partition**
 
 Once you get into the boot partition, make a file called "ssh" with no extension and save it. The text inside it doesn't matter, so you can put anything you want in there (or nothing, it doesn't matter)
 
@@ -78,7 +84,7 @@ Luckily, all we need to do is put our wpa supplicant in the boot folder and Rasb
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-country=<US>
+country=US
 
 network={
  ssid="<SSID>"
@@ -90,11 +96,14 @@ network={
 
 ## First boot!
 
-The pi will take a little while to get itself going, go grab a coffee and give it 5-10 minutes to initalize.
+The pi will take a little while to get itself going, go grab a coffee and give around 10 minutes to initalize.
 
-Once you feel like it has had enough time to set up, let's get into it!
+Once you've given your pi 10 minutes to set up, we can access it from our computer!
 
 ## SSHing in
+
+### MacOS or Linux
+
 For MacOS or linux, you will aready have ssh installed. For windows, you MAY have ssh installed; try the steps below, and if you get an "ssh is not recognized as an internal or external command" kind of thing, follow the instructions for "ssh (PuTTY)" below
 
 open your terminal and type in the following command and press enter
@@ -111,8 +120,15 @@ pi@raspberrypi's password:
 
 The default password is "raspberry" (when you type, nothing will show up. This is normal! Just type "raspberry" and press enter)
 
+**Note: you may see something that looks like**
+```
+The authenticity of host 'raspberrypi (192.168.3.127)' can't be established.
+ECDSA key fingerprint is SHA256:/ZBKVpFcCJh4Fl1gzgwIviCVNRWDBXFxL+WTL4TO+Fw.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+**before you are prompted for the password, just type "yes" and press enter to continue**
 
-### SSHing in (PuTTY)
+### Windows (PuTTY)
 
 install [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), a simple ssh client for windows
 

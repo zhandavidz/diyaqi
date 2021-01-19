@@ -15,6 +15,11 @@ i2cDeviceExists() {
 pulldeps(){
 	apt-get update
 
+	# git, cuz duh
+	apt-get install git
+	git clone https://github.com/t3chy/diyaqi
+	cd diyaqi || error "can't change directory git clone probably failed"
+
 	# python, for obvious reasons
 	apt-get install -y python3 python3-pip || exit 1
 	pip3 install --upgrade setuptools
