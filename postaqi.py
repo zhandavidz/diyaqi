@@ -31,11 +31,10 @@ if len(sys.argv) == 2:
         print(requests.post(host, data={"name":name, "temp":bme280.temperature, "humidity":bme280.humidity, "pressure":bme280.pressure, "altitude":bme280.altitude}))
     except Exception as e:
         print(e)
-
-
-while True:
-    try:
-        print(requests.post(host, data={"name":name, "temp":bme280.temperature, "humidity":bme280.humidity, "pressure":bme280.pressure, "altitude":bme280.altitude}))
-    except Exception as e:
-        print(e)
-    time.sleep(60)
+else:
+    while True:
+        try:
+            print(requests.post(host, data={"name":name, "temp":bme280.temperature, "humidity":bme280.humidity, "pressure":bme280.pressure, "altitude":bme280.altitude}))
+        except Exception as e:
+            print(e)
+        time.sleep(60)
