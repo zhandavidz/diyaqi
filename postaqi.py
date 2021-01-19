@@ -9,6 +9,7 @@ import adafruit_bme280
 # Create library object using our Bus I2C port
 try:
     config = open("config", "r")
+    config.readline()
     host = config.readline() + "/in"
     name = config.readline()
 except Exception as e:
