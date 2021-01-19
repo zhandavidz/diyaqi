@@ -32,6 +32,8 @@ Below are the steps to set up your very own Raspberry-Pi based air quality monit
 	- Some way to interface with your microsd card (adapter, port, etc)
 	- A computer running Windows, OS X (macOS), or linux)**
 
+**Note: you will need to wire up to the GPIO pins on the pi, so gettting a version with presoldered headers is recommended if you don't want to solder them yourself**
+
 *no reason other versions shouldn't work if they have wifi (or are connected to ethernet), but untested
 
 **if you use BSD you probably don't need to be reading this, but welcome! use dd or something lol
