@@ -52,7 +52,7 @@ Let's get to work! There are two options to burn Raspberry Pi OS onto your pi.
 5. Click on `CHOOSE OS` -> `Raspberry Pi OS (other)` -> `Raspberry Pi OS Lite (32-bit)`
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
 6. Click on `CHOOSE SD CARD` and select your MicroSD card from the list
-7. Click `WRITE` and `YES`
+7. Click `WRITE` and `YES`, and when it finishes click `CONTINUE` and close the program. Now you should have a bootable version of Raspberry Pi OS! Just a few more things to do before we put that card in the Pi
 
 #### Option 2: Download Image + BalenaEtcher
 
