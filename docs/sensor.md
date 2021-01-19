@@ -45,8 +45,14 @@ Let's get to work! There are two options to burn Raspberry Pi OS onto your pi.
 
 #### Option 1: Raspberry Pi Imager (Recommended)
 
-1. Download the latest version of Raspberry Pi Imager from https://www.raspberrypi.org/software/
+1. Download the latest version of Raspberry Pi Imager setup from https://www.raspberrypi.org/software/
+2. Launch the setup and install it following the instructions shown on screen
+3. Plug in your MicroSD card
+4. Launch Raspberry Pi Imager
+5. Click on `CHOOSE OS` -> `Raspberry Pi OS (other)` -> `Raspberry Pi OS Lite (32-bit)`
 	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
+6. Click on `CHOOSE SD CARD` and select your MicroSD card from the list
+7. Click `WRITE` and `YES`
 
 #### Option 2: Download Image + BalenaEtcher
 
