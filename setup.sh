@@ -77,7 +77,7 @@ checkUnique(){
 }
 testPost(){
 	resp=$(python postaqi.py firsttry)
-	if [ "$resp" == "<200>" ]; then
+	if [ "$resp" == "<Response [200]>" ]; then
 		echo 0
 	else
 		echo "$resp"
