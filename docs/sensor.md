@@ -159,10 +159,12 @@ The version number and time will be different, but the important part is that yo
 We now need to set up the sensor, and get it reporting. You're doing great!
 
 We now need to set up the sensor, configure where we're sending the data, and configure the data-sending script to start every time we turn on our pi. Sounds like a lot, doesn't it? Luckily, most of the process is automated (thanks, scripting!).
+
+
 All you need to do is run the following command while you're at the "pi@raspberrypi:~ $" prompt"
 
 ```
-git clone https://github.com/T3chy/diyaqi && cd diyaqi && sudo ./setup.sh
+wget https://raw.githubusercontent.com/T3chy/diyaqi/main/setup.sh && sudo chmod +x setup.sh && sudo ./setup.sh
 ```
 
 **Note: you may be asked for your password after running this command; simple enter 'raspberry' (without the quotes) or the new password you previosly set and press enter.**
