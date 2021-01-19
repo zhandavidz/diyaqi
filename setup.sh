@@ -199,7 +199,7 @@ while ! [ $flag -eq 0 ]; do
 	fi
 done
 
-printf "%s\n%s" "$host" "$name" > config
+printf "%s\n%s\n" "$host" "$name" > config
 
 echo "configuration stored!"
 
