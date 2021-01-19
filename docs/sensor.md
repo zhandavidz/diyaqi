@@ -46,7 +46,7 @@ Let's get to work!
 2. Download and install BalenaEtcher from https://www.balena.io/etcher/ for whatever operating system you are on
 3. Plug in your MicroSD card
 **Warning: the next steps will wipe all current data on your MicroSD Card**
-4. Open BalenaEtcher, select your MicroSD card (make sure you aren't accidentally burning the image to a random flash drive that's plugged in!) and the Raspberry Pi OS image, click "Flash!" and wait for Etcher to do its thing (flashing and verifying your flash)
+4. Open BalenaEtcher (you may need to open it with admin privileges), select your MicroSD card (make sure you aren't accidentally burning the image to a random flash drive that's plugged in!) and the Raspberry Pi OS image, click "Flash!" and wait for Etcher to do its thing (flashing and verifying your flash)
 5. Once BalenaEtcher finishes, you should have a bootable version of Raspberry Pi OS! Just a few more things to do before we put that card in the Pi
 
 ## Headless Config
