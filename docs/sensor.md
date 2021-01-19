@@ -45,7 +45,8 @@ Let's get to work! There are two options to burn Raspberry Pi OS onto your pi.
 
 #### Option 1: Raspberry Pi Imager (Recommended)
 
-1. step one
+1. Download the latest version of Raspberry Pi Imager from https://www.raspberrypi.org/software/
+	- Note! This tutorial only requires the "Lite" verison, but feel free to download either the "with desktop" or "with desktop and recommended software" versions if you perfer, those will work too!
 
 #### Option 2: Download Image + BalenaEtcher
 
