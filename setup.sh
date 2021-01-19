@@ -36,7 +36,20 @@ pulldeps(){
 	pip3 install RPI.GPIO || exit 1
 	pip3 install adafruit-blinka
 	pip3 install adafruit-circuitpython-bme280
+
+	#enable i2c
 }
+enablei2c(){
+	if compgen -G "/dev/i2c*" > /dev/null; then
+		echo 0
+	else
+		echo "i2c-bcm2708" >> /etc/modules
+		echo "i2c-dev" >> /etc/modules
+		echo "dtparam=i2c_arm=on" >> /boot/config.txt
+		echo "dtparam=i2c1=on" >> /boot/config.txt
+		echo 1
+	fi
+	}
 sensorTest(){
 	v="$(python sensorTest.py)"
 	if ! [ "$v" -eq 0 ]; then
@@ -71,6 +84,11 @@ echo "Welcome to the PiAQI autoinstallation script! Pulling dependancies..."
 
 
 pulldeps || error "dependancy pull failed!"
+
+if [ "$(enablei2c)" -eq 1 ]; then
+	echo "i2c has just been enabled. We now need to reboot. Press enter to continue, and then rerun this script with \"sudo ./setup.sh\" once you reconnect"
+fi
+
 
 read -r -p "dependancies pulled! Please hook up your BME280 sensor according to the diagram below and press enter to continue"
 
