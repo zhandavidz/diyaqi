@@ -149,6 +149,8 @@ while ! [ $flag -eq 0 ]; do
 	read -r flag
 	if [ "$flag" == "n" ]; then
 		flag=0
+	else
+		flag=1
 	fi
 	if [ $flag -eq 1 ]; then
 		echo "testing host..."
