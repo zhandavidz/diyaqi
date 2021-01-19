@@ -37,7 +37,6 @@ pulldeps(){
 	pip3 install adafruit-blinka
 	pip3 install adafruit-circuitpython-bme280
 
-	#enable i2c
 }
 enablei2c(){
 	if ! i2cdetect -y 1 > /dev/null; then
