@@ -160,7 +160,7 @@ while ! [ $flag -eq 0 ]; do
 		else
 			echo "host is not up :( retry? [y/N]"
 			read -r flag
-			if ! [ "$flag" == "y" ]; then
+			if [ "$flag" == "y" ]; then
 				flag=0
 			else
 				echo "exiting..."
